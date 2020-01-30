@@ -18,6 +18,7 @@ const addStudent = () => {
     } else {
         newName.house = 'Slytherin';
     }
+    
     students.push(newName);
     buildNameCard(students);
     console.log('after building array',students)
