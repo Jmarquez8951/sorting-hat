@@ -9,8 +9,36 @@
     <link rel="stylesheet" href="./main.css">
 </head>
 <body>
-    <h1>Sorting hat</h1>
-    <button class="btn btn-dark">button</button>
+    <div id="jumbotron" class="d-flex justify-content-center">
+        <div class="jumbotron">
+            <h1 class="display-4">Welcome to Hoggy Hoggy Warts!</h1>
+            <p class="lead">Alohamora wand elf parchment, Wingardium Leviosa hippogriff, house dementors betrayal. Holly, Snape centaur portkey ghost Hermione spell bezoar Scabbers. Peruvian-Night-Powder werewolf, Dobby pear-tickle half-moon-glasses, Knight-Bus. Padfoot snargaluff seker: Hagrid broomstick mischief managed.</p>
+            <hr class="my-4">
+            <p>Red hair crookshanks bludger Marauder's Map Prongs sunshine daises butter mellow Ludo Bagman.</p>
+            <p class="lead">
+            <a id="start" class="btn btn-primary btn-lg" href="#" role="button">Let's start sorting!</a>
+            </p>
+        </div>
+    </div>
+    <div class="border border-dark rounded form d-flex justify-content-center flex-wrap">
+      <form class="">
+          <div class="col">
+            <h3>Enter First Year's Name</h3>
+          </div>
+        <div class="row justify-content-between">
+            <div class="row">
+                <h4>Student:</h4>
+            </div>
+          <div class="col-8">
+            <input type="text" class="form-control" placeholder="Neville Longbottom">
+          </div>
+          <div class="row">
+            <button id="sort" class="btn btn-dark">Sort!</button>
+          </div>
+        </div>
+      </form>
+    </div>
+      <div id="sorting-hat" class="d-flex wrap"></div>
     <script src="./main.js"></script>
 </body>
 </html>
