@@ -16,7 +16,7 @@
             <hr class="my-4">
             <p>Red hair crookshanks bludger Marauder's Map Prongs sunshine daises butter mellow Ludo Bagman.</p>
             <p class="lead">
-            <a id="start" class="btn btn-primary btn-lg" href="#" role="button">Let's start sorting!</a>
+            <a id="start" class="btn btn-primary btn-lg" role="button">Let's start sorting!</a>
             </p>
         </div>
     </div>
@@ -30,15 +30,16 @@
                 <h4>Student:</h4>
             </div>
           <div class="col-8">
-            <input type="text" class="form-control" placeholder="Neville Longbottom">
+            <input id="user-input" type="text" class="form-control" placeholder="Neville Longbottom">
           </div>
           <div class="row">
-            <button id="sort" class="btn btn-dark">Sort!</button>
+            <a id="addName" class="btn btn-dark btn-md" role="button">Sort!</a>
           </div>
         </div>
       </form>
     </div>
-      <div id="sorting-hat" class="d-flex wrap"></div>
+
+      <div id="sorting-hat" class="d-flex flex-wrap"></div>
     <script src="./main.js"></script>
 </body>
 </html>
