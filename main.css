@@ -1,3 +1,13 @@
 body {
     background-color: red;
 }
+
+#jumbotron {
+    padding: 40px;
+}
+
+.form {
+    padding: 20px;
+    margin: 20px;
+    background-color: white;
+}
