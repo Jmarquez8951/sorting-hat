@@ -21,6 +21,7 @@ const addStudent = () => {
     
     students.push(newName);
     buildNameCard(students);
+    document.getElementById('test').addEventListener('click', removeMe);
     console.log('after building array',students)
 }
 
@@ -31,12 +32,19 @@ const buildNameCard = () => {
         domString += '<div class="card-body">'
         domString += `<h5 class="card-title">${students[i].name}</h5>`
         domString += `<p class="card-text">${students[i].house}</p>`
-        domString += `<a id="${i}" class="btn btn-light">Expel</a>`
+        domString += `<a id="test" class="btn btn-light">Expel</a>`
         domString += '</div>'
         domString += '</div>'
     }
     printToDom('sorting-hat', domString);
-    
+};
+
+
+
+const removeMe = (e) => {
+    console.log(e);
+    // const buttonId = e.target.id;
+    // if (buttonId === '')
 };
 
 const events = () => {
