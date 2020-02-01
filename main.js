@@ -10,7 +10,7 @@ const addStudent = () => {
     const newName = new Object();
     newName.name = document.getElementById('user-input').value;
     newName.house = Math.ceil(Math.random() * 4);
-    newName.date = Date.now();
+    newName.id = Date.now();
     if (newName.house === 4 ){
         newName.house = 'Gryffindor';
     } else if (newName.house === 3){
@@ -24,7 +24,7 @@ const addStudent = () => {
     students.push(newName);
     buildNameCard(students);
     for (let i = 0; i < students.length; i++){
-        document.getElementById(`${students[i].date}`).addEventListener('click', removeMe);
+        document.getElementById(`${students[i].id}`).addEventListener('click', removeMe);
     }
     console.log('after building array', students)
 }
@@ -32,15 +32,15 @@ const addStudent = () => {
 const removeMe = (e) =>{
     const buttonId = e.target.id;
     
-        for (let i = 0; i < students.length; i++){
-            if (buttonId === students[i].date.toString()){
-            console.log(e.target.id)
-            students.splice(students[i], 1)
-            newStudentArray.push(students[i])
-            console.log('in here', newStudentArray)
+    for (let i = 0; i < students.length; i++){
+        if (buttonId === students[i].id.toString()){
+        students.splice(i, 1)
+        console.log(students)
+        newStudentArray.push(students)
+        console.log('in here', students)
         }
-        buildNameCard(students)
     }
+    buildNameCard(students)
 }
 
 const buildNameCard = (arr) => {
@@ -50,7 +50,7 @@ const buildNameCard = (arr) => {
         domString += '<div class="card-body">'
         domString += `<h5 class="card-title">${arr[i].name}</h5>`
         domString += `<p class="card-text">${arr[i].house}</p>`
-        domString += `<a id="${arr[i].date}" class="btn btn-light">Expel</a>`
+        domString += `<a id="${arr[i].id}" class="expel btn btn-light">Expel</a>`
         domString += '</div>'
         domString += '</div>'
     }
