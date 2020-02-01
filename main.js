@@ -1,5 +1,5 @@
 const students = [];
-const newStudentArray = [];
+const removedStudent = [];
 
 const printToDom = (divId, textToPrint) => {
     const selectedDiv = document.getElementById(divId);
@@ -7,51 +7,51 @@ const printToDom = (divId, textToPrint) => {
 };
 
 const addStudent = () => {
-    const newName = new Object();
-    newName.name = document.getElementById('user-input').value;
-    newName.house = Math.ceil(Math.random() * 4);
-    newName.id = Date.now();
-    if (newName.house === 4 ){
-        newName.house = 'Gryffindor';
-    } else if (newName.house === 3){
-        newName.house = 'Hufflepuff';
-    } else if (newName.house === 2){
-        newName.house = 'Ravenclaw';
+    const newStudent = new Object();
+    newStudent.name = document.getElementById('user-input').value;
+    newStudent.house = Math.ceil(Math.random() * 4);
+    newStudent.id = Date.now();
+    if (newStudent.house === 4 ){
+        newStudent.house = 'Gryffindor';
+    } else if (newStudent.house === 3){
+        newStudent.house = 'Hufflepuff';
+    } else if (newStudent.house === 2){
+        newStudent.house = 'Ravenclaw';
     } else {
-        newName.house = 'Slytherin';
+        newStudent.house = 'Slytherin';
     }
-    students.push(newName);
+    students.push(newStudent);
     buildNameCard(students);
+    //move this into its own function
     for (let i = 0; i < students.length; i++){
         document.getElementById(`${students[i].id}`).addEventListener('click', removeMe);
     }
-    console.log('after building array', students)
+    console.log('after building array', students);
 }
 
-const removeMe = (e) =>{
-    const buttonId = e.target.id;
-    
+const removeMe = (e) => {
+    const buttonId = e.target.id;  
     for (let i = 0; i < students.length; i++){
         if (buttonId === students[i].id.toString()){
-        students.splice(i, 1)
-        console.log(students)
-        newStudentArray.push(students)
-        console.log('in here', students)
+            newVar = students.splice(i, 1);
+            removedStudent.push(newVar[0]);
+            console.log('students', students);
+            console.log('removedStudent', removedStudent);
         }
     }
-    buildNameCard(students)
+    buildNameCard(students);
 }
 
 const buildNameCard = (arr) => {
     let domString = '';
     for (let i = 0; i < arr.length; i++){
-        domString += '<div class="m-4 border border-dark rounded card row align-content-center align-self-start" style="width: 18rem;">'
-        domString += '<div class="card-body">'
-        domString += `<h3 class="card-title p-2">${arr[i].name}</h3>`
-        domString += `<h5 class="card-text align-self-center">${arr[i].house}</h5>`
-        domString += `<a id="${arr[i].id}" class="expel btn btn-light border border-dark">Expel</a>`
-        domString += '</div>'
-        domString += '</div>'
+        domString += `<div class="col-3 m-3 pt-3 border border-dark rounded card row align-content-center align-self-start ${arr[i].house}" style="width: 18rem;">`;
+        domString += '<div class="card-body">';
+        domString += `<h3 class="card-title p-2">${arr[i].name}</h3>`;
+        domString += `<h5 class="card-text align-self-center">${arr[i].house}</h5>`;
+        domString += `<a id="${arr[i].id}" class="expel btn btn-light border border-dark">Expel</a>`;
+        domString += '</div>';
+        domString += '</div>';
     }
     printToDom('sorting-hat', domString);
 };

@@ -1,5 +1,5 @@
 body {
-    background-color: red;
+    background-color: beige;
 }
 
 #jumbotron {
@@ -14,4 +14,24 @@ body {
 
 a.btn-dark {
     color: white;
+}
+
+.Ravenclaw {
+    background-color: brown;
+    color: rgb(34, 34, 153);
+}
+
+.Hufflepuff {
+    background-color: yellow;
+    color: black;
+}
+
+.Slytherin {
+    background-color: green;
+    color: grey;
+}
+
+.Gryffindor {
+    background-color: red;
+    color: rgb(230, 230, 88);
 }
