@@ -1,4 +1,5 @@
 const students = [];
+const newStudentArray = [];
 
 const printToDom = (divId, textToPrint) => {
     const selectedDiv = document.getElementById(divId);
@@ -22,8 +23,24 @@ const addStudent = () => {
     
     students.push(newName);
     buildNameCard(students);
-    // document.getElementById('test').addEventListener('click', removeMe);
+    for (let i = 0; i < students.length; i++){
+        document.getElementById(`${students[i].date}`).addEventListener('click', removeMe);
+    }
     console.log('after building array', students)
+}
+
+const removeMe = (e) =>{
+    const buttonId = e.target.id;
+    
+        for (let i = 0; i < students.length; i++){
+            if (buttonId === students[i].date.toString()){
+            console.log(e.target.id)
+            students.splice(students[i], 1)
+            newStudentArray.push(students[i])
+            console.log('in here', newStudentArray)
+        }
+        buildNameCard(students)
+    }
 }
 
 const buildNameCard = (arr) => {
@@ -33,28 +50,11 @@ const buildNameCard = (arr) => {
         domString += '<div class="card-body">'
         domString += `<h5 class="card-title">${arr[i].name}</h5>`
         domString += `<p class="card-text">${arr[i].house}</p>`
-        domString += `<a id="test" class="btn btn-light ${arr[i].date}">Expel</a>`
+        domString += `<a id="${arr[i].date}" class="btn btn-light">Expel</a>`
         domString += '</div>'
         domString += '</div>'
     }
     printToDom('sorting-hat', domString);
-};
-
-
-
-const removeMe = (e) => {
-    console.log(e);
-    const buttonId = e.target.id.class;
-    const newArray = [];
-    if (buttonId === students[i].date && students[i].date !== document.getElementsByClassName(students[i].date)){
-        
-        for (let i = 0; i < students.length; i++){
-        
-            newArray.push(students[i]);
-        }
-    }
-    buildNameCard(newArray)
-    console.log(newArray)
 };
 
 const events = () => {
@@ -62,7 +62,6 @@ const events = () => {
 };
 
 const init = () => {
-    buildNameCard(students);
     events();
 };
 
