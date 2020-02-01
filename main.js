@@ -1,4 +1,5 @@
 const students = [];
+const newStudentArray = [];
 
 const printToDom = (divId, textToPrint) => {
     const selectedDiv = document.getElementById(divId);
@@ -9,6 +10,7 @@ const addStudent = () => {
     const newName = new Object();
     newName.name = document.getElementById('user-input').value;
     newName.house = Math.ceil(Math.random() * 4);
+    newName.id = Date.now();
     if (newName.house === 4 ){
         newName.house = 'Gryffindor';
     } else if (newName.house === 3){
@@ -18,25 +20,40 @@ const addStudent = () => {
     } else {
         newName.house = 'Slytherin';
     }
-    
     students.push(newName);
     buildNameCard(students);
-    console.log('after building array',students)
+    for (let i = 0; i < students.length; i++){
+        document.getElementById(`${students[i].id}`).addEventListener('click', removeMe);
+    }
+    console.log('after building array', students)
 }
 
-const buildNameCard = () => {
-    let domString = '';
+const removeMe = (e) =>{
+    const buttonId = e.target.id;
+    
     for (let i = 0; i < students.length; i++){
-        domString += '<div class="card col-4" style="width: 18rem;">'
+        if (buttonId === students[i].id.toString()){
+        students.splice(i, 1)
+        console.log(students)
+        newStudentArray.push(students)
+        console.log('in here', students)
+        }
+    }
+    buildNameCard(students)
+}
+
+const buildNameCard = (arr) => {
+    let domString = '';
+    for (let i = 0; i < arr.length; i++){
+        domString += '<div class="m-4 border border-dark rounded card row align-content-center align-self-start" style="width: 18rem;">'
         domString += '<div class="card-body">'
-        domString += `<h5 class="card-title">${students[i].name}</h5>`
-        domString += `<p class="card-text">${students[i].house}</p>`
-        domString += `<a id="${i}" class="btn btn-light">Expel</a>`
+        domString += `<h3 class="card-title p-2">${arr[i].name}</h3>`
+        domString += `<h5 class="card-text align-self-center">${arr[i].house}</h5>`
+        domString += `<a id="${arr[i].id}" class="expel btn btn-light border border-dark">Expel</a>`
         domString += '</div>'
         domString += '</div>'
     }
     printToDom('sorting-hat', domString);
-    
 };
 
 const events = () => {
@@ -44,7 +61,6 @@ const events = () => {
 };
 
 const init = () => {
-    buildNameCard(students);
     events();
 };
 
