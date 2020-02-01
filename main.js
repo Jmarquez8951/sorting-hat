@@ -20,7 +20,6 @@ const addStudent = () => {
     } else {
         newName.house = 'Slytherin';
     }
-    
     students.push(newName);
     buildNameCard(students);
     for (let i = 0; i < students.length; i++){
@@ -46,11 +45,11 @@ const removeMe = (e) =>{
 const buildNameCard = (arr) => {
     let domString = '';
     for (let i = 0; i < arr.length; i++){
-        domString += '<div class="card col-4" style="width: 18rem;">'
+        domString += '<div class="m-4 border border-dark rounded card row align-content-center align-self-start" style="width: 18rem;">'
         domString += '<div class="card-body">'
-        domString += `<h5 class="card-title">${arr[i].name}</h5>`
-        domString += `<p class="card-text">${arr[i].house}</p>`
-        domString += `<a id="${arr[i].id}" class="expel btn btn-light">Expel</a>`
+        domString += `<h3 class="card-title p-2">${arr[i].name}</h3>`
+        domString += `<h5 class="card-text align-self-center">${arr[i].house}</h5>`
+        domString += `<a id="${arr[i].id}" class="expel btn btn-light border border-dark">Expel</a>`
         domString += '</div>'
         domString += '</div>'
     }
