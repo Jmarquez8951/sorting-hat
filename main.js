@@ -8,6 +8,9 @@ const printToDom = (divId, textToPrint) => {
 
 const addStudent = () => {
     const newStudent = new Object();
+    if (document.getElementById('user-input').value === ''){
+        alert('Please fill out the name of the student in the input box.')
+    } else {
     newStudent.name = document.getElementById('user-input').value;
     newStudent.house = Math.ceil(Math.random() * 4);
     newStudent.id = Date.now();
@@ -22,9 +25,9 @@ const addStudent = () => {
     }
     students.push(newStudent);
     buildNameCard(students);
-    //move this into its own function
     buttonMaker(students);
     console.log('after building array', students);
+    }
 }
 
 const buttonMaker = (arr) => {
