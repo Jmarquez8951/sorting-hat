@@ -23,22 +23,20 @@ const addStudent = () => {
     students.push(newStudent);
     buildNameCard(students);
     //move this into its own function
-    for (let i = 0; i < students.length; i++){
-        document.getElementById(`${students[i].id}`).addEventListener('click', removeMe);
-    }
+    buttonMaker(students);
     console.log('after building array', students);
 }
 
-const removeMe = (e) => {
-    const buttonId = e.target.id;  
-    for (let i = 0; i < students.length; i++){
-        if (buttonId === students[i].id.toString()){
-            newVar = students.splice(i, 1);
-            removedStudent.push(newVar[0]);
-            console.log('students', students);
-            console.log('removedStudent', removedStudent);
-        }
+const buttonMaker = (arr) => {
+    for (let i = 0; i < arr.length; i++){
+        document.getElementById(`${arr[i].id}`).addEventListener('click', removeMe);
     }
+}
+
+const removeMe = (i) => {
+    removedStudentFromOriginalArray = students.splice(i, 1);
+    removedStudent.push(removedStudentFromOriginalArray);
+    console.log(removedStudent)
     buildNameCard(students);
 }
 
@@ -49,7 +47,7 @@ const buildNameCard = (arr) => {
         domString += '<div class="card-body">';
         domString += `<h3 class="card-title p-2">${arr[i].name}</h3>`;
         domString += `<h5 class="card-text align-self-center">${arr[i].house}</h5>`;
-        domString += `<a id="${arr[i].id}" class="expel btn btn-light border border-dark">Expel</a>`;
+        domString += `<a onClick="removeMe(${i})" id="${arr[i].id}" class="expel btn btn-light border border-dark">Expel</a>`;
         domString += '</div>';
         domString += '</div>';
     }
