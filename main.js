@@ -31,7 +31,7 @@ const addStudent = () => {
 }
 
 const buttonMaker = (arr) => {
-    for (let i = 0; i < arr.length; i++){
+    for (let i = -1; i < arr.length; i++){
         document.getElementById(`${arr[i].id}`).addEventListener('click', removeMe);
     }
 }
