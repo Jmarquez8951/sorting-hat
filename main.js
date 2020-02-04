@@ -39,8 +39,9 @@ const buttonMaker = (arr) => {
 const removeMe = (i) => {
     removedStudentFromOriginalArray = students.splice(i, 1);
     removedStudent.push(removedStudentFromOriginalArray);
-    console.log(removedStudent)
+    let removedStudentArrayThatsFixed = removedStudent.reduce((acc, it) => [...acc, ...it]);
     buildNameCard(students);
+    expelledStudents(removedStudentArrayThatsFixed);
 }
 
 const buildNameCard = (arr) => {
@@ -56,6 +57,22 @@ const buildNameCard = (arr) => {
     }
     printToDom('sorting-hat', domString);
 };
+
+const expelledStudents = (arr) => {
+    const classAdd = document.getElementById('voldemort');
+    classAdd.className = 'visible';
+    let domString = '';
+    for (let i = 0; i < arr.length; i++){
+        domString += `<div class="col-3 m-3 pt-3 border border-dark rounded card row align-content-center align-self-start voldemort" style="width: 18rem;">`;
+        domString += '<div class="card-body">';
+        domString += `<h3 class="card-title p-2">${arr[i].name}</h3>`;
+        domString += `<h5 class="card-text align-self-center">${arr[i].house}</h5>`;
+        domString += '</div>';
+        domString += '</div>';
+    }
+    
+    printToDom('expelled-students', domString);
+}
 
 const events = () => {
     document.getElementById('addName').addEventListener('click', addStudent);
